@@ -1,6 +1,6 @@
 [
     {
-        title: "Private Residence",
+        "title": "Private Residence",
         "subtitle": "New York, NY 2012",
         "image" : "files/001_972_DSC04649_thumb.JPG",
         "description" : "Renovation of a four-bedroom apartment on the Upper West Side.  The existing apartment is a combination of four units in a Landmarked building that was built as a hotel in the 1920s.  The renovation reconfigures the apartment in a more gracious manner, with new finish materials throughout, as well as new low-E and sound reducing insulated glass windows.  The extensive use of prismatic glass brings natural light to secondary spaces distant from the exterior walls. ",
@@ -18,7 +18,7 @@
         ]
     }
 	,{
-        title: "NY Residence 2",
+        "title": "NY Residence 2",
         "subtitle": "New York, NY 2012",
         "image" : "files/001_972_DSC04649_thumb.JPG",
         "description" : "residence 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pretium euismod est, ut placerat magna porta ut. Donec in libero eu ipsum luctus tristique nec sed dui. ",
