@@ -1,0 +1,93 @@
+    html, body {
+       
+        background-color: #ACA88F;            
+        font-family: Georgia, 'Times New Roman',serif;
+        color: #111;
+        font-size: 14px;
+        
+        height: 100%
+    }
+    a:link, a:visited{
+        color: #111;
+    }
+    
+
+    
+    #left {
+        background-image: url('../img/logo.gif'), url('../img/Divider.gif') ;
+        background-position: left top, right top;
+        background-repeat: no-repeat;                
+        float: left;
+        width: 390px;
+        
+    }
+    
+    #left + div{
+        margin-left: 395px;
+        overflow:hidden;
+    }
+
+    #right:after {
+        
+
+
+
+        background-color:inherit;
+        bottom: 0;
+        content: "";
+        height: auto;
+        min-height: 100%;
+        left: 0;
+        margin:inherit;
+        right: 0;
+        position: absolute;
+        top: 0;
+        width: inherit;
+        z-index: -1; 
+    }
+    #footer {
+        clear: both;
+        margin-top: 50px;
+        font-size: .8em;
+        
+        margin-left: 385px;
+    }
+        
+    #content{
+        margin-top: 30px;
+    }
+        
+    #navList{
+        margin-top: 50px;
+        margin-right: 5px;
+        list-style-type:none; 
+        padding-right: 10px;            
+    }
+        
+    #navList li a:link, a:visited{
+        font-family: Georgia, 'Times New Roman',serif;
+        
+        color: #222;
+        font-size: 18px;
+        text-shadow: 1px 2px #999;
+        
+        text-align: right;
+        display:block;
+        text-decoration:none;
+        line-height:  36px;
+    }
+    #navList li a:hover, a:active, a.active{
+        color: #ddd;
+    }
+    #navList li a.active{
+        color:#eee;
+    }
+
+    
+    h3 {
+        font-weight: bold;
+        display: block;
+        font-size: 1.1em;
+        line-height: 0.5em;
+    }
+    

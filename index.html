@@ -10,19 +10,64 @@
         <script type="text/javascript">
             $(function () {
 
-                var timer0Start = 5;
+                var timer0Start = 500000;
                 var timer1Start = 5;
 
-                clock.timer0 = timer0Start;
-                clock.timer1 = timer1Start;
+                var clock = new Clock(5000, 6000);
 
                 ko.applyBindings(clock);
+
+                clock.start();
             });
 
-            var clock = {
-                timer0: new ko.observable(0),
-                timer1: new ko.observable(0)
+            var Clock = function (timer0, timer1) {
+                
+                var self = this;
+
+                self.place = 0;
+                self.timer0 = new ko.observable(timer0);
+                self.timer1 = new ko.observable(timer1);
+
+                self.interval = 1000;
+
+                self.stopwatchStart;
+
+
+                self.start = function () {
+                    self.stopwatchStart = Date.now();
+
+                    var x = setInterval(function () {
+                        self.repaint();
+                    }, self.interval);
+                };
+
+                self.repaint = function(){
+                    now = Date.now();
+                    
+                    elapsed = now - self.stopwatchStart;
+
+                    self.stopwatchStart = now;
+
+                    if (self.place == 0) {
+                        self.timer0(self.timer0() - elapsed);
+                        console.log(self.timer0());
+                    }
+                    else {
+                        self.timer1(self.timer1() - elapsed);
+                        console.log(self.timer1());
+                    }
+
+                };
+
+                self.click = function () {
+                    self.repaint();
+                    self.place = (self.place == 0) ? 1 : 0;
+                };
+
             };
+
+            
+
 
             ko.bindingHandlers.clockButton = {
                 init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
@@ -31,7 +76,7 @@
                     $(element)
                     .text(timer)
                     .click(function () {
-                        timer--;
+                        viewModel.click();
                     });
                 },
                 update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
@@ -66,11 +111,11 @@
     </head>
     <body>
         <div class="container">
-            <div id="clock0" class="clock" data-bind="clockButton: timer0"></div>
+            <div id="clock0" class="clock" data-bind="clockButton: timer0()"></div>
             <div class="separator">
             
             </div>
-            <div id="clock1" class="clock" data-bind="clockButton: timer1"></div>
+            <div id="clock1" class="clock" data-bind="clockButton: timer1()"></div>
         </div>
     </body>
 </html>
