@@ -1,121 +1,38 @@
+
 <!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title></title>
-        <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="knockout-3.0.0.js"></script>
-        <script type="text/javascript" src="cordova.js" ></script>
-        <script type="text/javascript">
-            $(function () {
-
-                var timer0Start = 500000;
-                var timer1Start = 5;
-
-                var clock = new Clock(5000, 6000);
-
-                ko.applyBindings(clock);
-
-                clock.start();
-            });
-
-            var Clock = function (timer0, timer1) {
-                
-                var self = this;
-
-                self.place = 0;
-                self.timer0 = new ko.observable(timer0);
-                self.timer1 = new ko.observable(timer1);
-
-                self.interval = 1000;
-
-                self.stopwatchStart;
-
-
-                self.start = function () {
-                    self.stopwatchStart = Date.now();
-
-                    var x = setInterval(function () {
-                        self.repaint();
-                    }, self.interval);
-                };
-
-                self.repaint = function(){
-                    now = Date.now();
-                    
-                    elapsed = now - self.stopwatchStart;
-
-                    self.stopwatchStart = now;
-
-                    if (self.place == 0) {
-                        self.timer0(self.timer0() - elapsed);
-                        console.log(self.timer0());
-                    }
-                    else {
-                        self.timer1(self.timer1() - elapsed);
-                        console.log(self.timer1());
-                    }
-
-                };
-
-                self.click = function () {
-                    self.repaint();
-                    self.place = (self.place == 0) ? 1 : 0;
-                };
-
-            };
-
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Truong Montgomery Architect</title>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js" type="text/javascript"></script>
+     <script src="js/bootstrap.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="screen" />     
+    <script src="js/site.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/site.css" type="text/css" /> 
+    
+</head>
+<body>
+    <div id="left">
+        <ul id="navList">
+            <li><a href="default.html" class="active">home</a></li>
+            <li><a href="profile.html">profile</a></li>
+            <li><a href="gallery.html">gallery</a></li>
+            <li><a href="contact.html">contact</a></li>
+        </ul>
+    </div>
+    <div id="right">
+                <img alt="page title" src="img/title_home.gif" /> 
+         
+                <div id="content">
             
+                    <img src="Home.jpg" />
+        
+                </div>
+    </div>
 
-
-            ko.bindingHandlers.clockButton = {
-                init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
-                    var timer = valueAccessor();
-                    
-                    $(element)
-                    .text(timer)
-                    .click(function () {
-                        viewModel.click();
-                    });
-                },
-                update: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
-                    // This will be called once when the binding is first applied to an element,
-                    // and again whenever the associated observable changes value.
-                    // Update the DOM element based on the supplied values here.
-                }
-            };
-
-
-            //http://jsbin.com/IgaXEVI/8/edit
-        </script>
-        <style>
-            .clock{
-                background-color: #808080;
-                height: 45%;
-                text-align: center;
-                vertical-align: middle;
-                font-size: 72px;
-            }
-            .separator{
-                height: 20px;
-                background-color: #000;
-            }
-            .container{
-                height: 100%;
-                width: 100%;
-                
-                background-color: #ffd800;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div id="clock0" class="clock" data-bind="clockButton: timer0()"></div>
-            <div class="separator">
-            
-            </div>
-            <div id="clock1" class="clock" data-bind="clockButton: timer1()"></div>
-        </div>
-    </body>
+    <div id="footer">
+        &copy;2014 Truong Montgomery Architect
+    </div>
+</body>
 </html>
